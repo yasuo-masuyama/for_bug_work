@@ -1,17 +1,19 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
     @blogs = Blog.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @blog = Blog.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @blog = Blog.new(blog_params)
@@ -42,6 +44,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title)
+    params.require(:blog).permit(:title, :content)
   end
 end

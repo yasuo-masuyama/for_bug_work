@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @blog.comments.create(comment_params)
-    redirect_to blog_path(@blog)
+    redirect_to blog_path(@blog) if @comment.save
   end
 
   def destroy
     @comment = @blog.comments.find(params[:id])
     @comment.destroy
-    redirect_to
+    redirect_to blog_path(@blog)
   end
 
   private
